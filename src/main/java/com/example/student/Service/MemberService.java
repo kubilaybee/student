@@ -16,44 +16,39 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 import java.util.UUID;
 
-@Slf4j
 @Service
 public class MemberService {
 
     private MemberRepo memberRepo;
-    private MemberRequestDto memberRequestDto;
-    private ModelMapperUtils modelMapperUtils;
 
-    public MemberService(MemberRepo memberRepo, MemberRequestDto memberRequestDto, ModelMapperUtils modelMapperUtils) {
+    public MemberService(MemberRepo memberRepo) {
         this.memberRepo = memberRepo;
-        this.memberRequestDto = memberRequestDto;
-        this.modelMapperUtils = modelMapperUtils;
     }
 
 
     @Transactional
     public void addMember(MemberRequestDto memberRequestDto){
-        Member member = modelMapperUtils.map(memberRequestDto,Member.class);
+        Member member = ModelMapperUtils.map(memberRequestDto,Member.class);
         member.setUuid(UUID.randomUUID().toString());
         memberRepo.saveAndFlush(member);
     }
 
     public MemberResponseDto findByUuid(String uuid){
         Member member = memberRepo.findByUuid(uuid).orElseThrow(()->new DataNotFoundException(ErrorMessages.MEMBER_NOT_FOUND.getValue()));
-        return modelMapperUtils.map(member, MemberResponseDto.class);
+        return ModelMapperUtils.map(member, MemberResponseDto.class);
     }
 
     public List<MemberResponseDto> getAllMembers(){
         List<Member> memberList = memberRepo.findAll();
-        return modelMapperUtils.mapAll(memberList, MemberResponseDto.class);
+        return ModelMapperUtils.mapAll(memberList, MemberResponseDto.class);
     }
 
     @Transactional
     public MemberResponseDto updateMember(String memberUuid, MemberRequestDto memberRequestDto) {
         Member member = memberRepo.findByUuid(memberUuid).orElseThrow(()->new DataNotFoundException(ErrorMessages.MEMBER_NOT_FOUND.getValue()));
-        modelMapperUtils.map(memberRequestDto,member);
+        ModelMapperUtils.map(memberRequestDto,member);
         Member updatedMember = memberRepo.saveAndFlush(member);
-        return modelMapperUtils.map(updatedMember, MemberResponseDto.class);
+        return ModelMapperUtils.map(updatedMember, MemberResponseDto.class);
     }
 
     public void deleteByUuid(String currentMemberUuid, String targetMemberUuid){

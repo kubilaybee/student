@@ -38,8 +38,8 @@ public class MemberController {
         return ResponseEntity.ok(updatedMember);
     }
     @DeleteMapping("/{uuid}")
-    public ResponseEntity<String> deleteMember(@PathVariable(value = "uuid")String deleteMember,@RequestBody String currentMember){
-        memberService.deleteByUuid(currentMember,deleteMember);
+    public ResponseEntity<String> deleteMember(@PathVariable(value = "uuid")String deleteMemberUuid,@RequestBody String currentMemberUuid){
+        memberService.deleteByUuid(currentMemberUuid,deleteMemberUuid);
         return ResponseEntity.ok("Deleted!");
     }
 }

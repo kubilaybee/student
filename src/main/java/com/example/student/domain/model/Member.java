@@ -1,4 +1,4 @@
-package com.example.student.domain.Model;
+package com.example.student.domain.model;
 
 import com.example.student.enums.Role;
 import jakarta.persistence.*;

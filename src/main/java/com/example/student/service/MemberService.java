@@ -1,15 +1,14 @@
-package com.example.student.Service;
+package com.example.student.service;
 
-import com.example.student.Exception.DataNotFoundException;
-import com.example.student.Exception.PermissionException;
-import com.example.student.Repository.MemberRepo;
-import com.example.student.domain.Model.Member;
+import com.example.student.exception.DataNotFoundException;
+import com.example.student.exception.PermissionException;
+import com.example.student.repository.MemberRepo;
+import com.example.student.domain.model.Member;
 import com.example.student.domain.request.MemberRequestDto;
 import com.example.student.domain.response.MemberResponseDto;
 import com.example.student.enums.Role;
 import com.example.student.util.ErrorMessages;
 import com.example.student.util.converter.ModelMapperUtils;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 

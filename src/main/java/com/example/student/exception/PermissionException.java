@@ -1,4 +1,4 @@
-package com.example.student.Exception;
+package com.example.student.exception;
 
 public class PermissionException extends RuntimeException{
 

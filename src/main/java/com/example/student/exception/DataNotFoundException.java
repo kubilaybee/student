@@ -1,4 +1,4 @@
-package com.example.student.Exception;
+package com.example.student.exception;
 
 public class DataNotFoundException extends RuntimeException{
     public DataNotFoundException(String message){

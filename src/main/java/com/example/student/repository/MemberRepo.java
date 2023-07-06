@@ -1,6 +1,6 @@
-package com.example.student.Repository;
+package com.example.student.repository;
 
-import com.example.student.domain.Model.Member;
+import com.example.student.domain.model.Member;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

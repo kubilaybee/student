@@ -1,6 +1,6 @@
-package com.example.student.Controller;
+package com.example.student.controller;
 
-import com.example.student.Service.MemberService;
+import com.example.student.service.MemberService;
 import com.example.student.domain.request.MemberRequestDto;
 import com.example.student.domain.response.MemberResponseDto;
 import org.springframework.http.ResponseEntity;
